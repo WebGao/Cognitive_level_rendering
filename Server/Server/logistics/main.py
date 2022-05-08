@@ -18,6 +18,21 @@ def train_server(request):
     log = train(know_feature_n, exer_feature_n, config_model_n())
     return HttpResponse(log)
 
+def predict_server(request):
+    know_feature_n = 7
+    exer_feature_n = 3
+    request.encoding = 'utf-8'
+    if 'stu_id' in request.GET and request.GET['stu_id']:
+        stu_id = int(request.GET['stu_id'])
+        http_response = predict(stu_id, know_feature_n, exer_feature_n, config_model_n())
+        http_response['stu_id'] = stu_id
+        return JsonResponse(http_response)
+    else:
+        return HttpResponse('请指定stu_id，如：/predict?stu_id=2')
+
+def record_server(request):
+    print (123)
+
 if __name__ == '__main__':
     know_feature_n = 7
     '''
