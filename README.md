@@ -5,62 +5,33 @@
 - 目录结构
 ```
 └── Cognitive_level_rendering
-    ├── README.md
+    ├── README.md // 说明文档
     └── Server
         ├── db.sqlite3
         ├── manage.py
         └── Server
-            ├── asgi.py
             ├── __init__.py
-            ├── logistics
-            │   ├── config.txt
-            │   ├── data
-            │   │   └── log.txt
+            ├── logistics // 学情代码
             │   ├── data_loader.py
             │   ├── exer_know.py
             │   ├── main.py
-            │   ├── model
             │   ├── model.py
             │   ├── predict.py
-            │   ├── __pycache__
-            │   │   ├── data_loader.cpython-38.pyc
-            │   │   ├── data_loader.cpython-39.pyc
-            │   │   ├── exer_know.cpython-39.pyc
-            │   │   ├── main.cpython-38.pyc
-            │   │   ├── main.cpython-39.pyc
-            │   │   ├── model.cpython-38.pyc
-            │   │   ├── model.cpython-39.pyc
-            │   │   ├── predict.cpython-38.pyc
-            │   │   ├── predict.cpython-39.pyc
-            │   │   ├── recommend.cpython-39.pyc
-            │   │   ├── train.cpython-38.pyc
-            │   │   └── train.cpython-39.pyc
-            │   ├── README.md
-            │   ├── readme.txt
             │   ├── recommend.py
-            │   ├── topic1
-            │   │   ├── config.txt
-            │   │   ├── data
-            │   │   │   ├── exercise.json
-            │   │   │   ├── exer_know.json
-            │   │   │   └── log.txt
-            │   │   ├── exercise
-            │   │   │   └── 主题1知道点相关问题.csv
-            │   │   ├── __init__.py
-            │   │   └── model
-            │   │       └── model_1
-            │   └── train.py
-            ├── __pycache__
-            │   ├── __init__.cpython-38.pyc
-            │   ├── __init__.cpython-39.pyc
-            │   ├── settings.cpython-38.pyc
-            │   ├── settings.cpython-39.pyc
-            │   ├── urls.cpython-38.pyc
-            │   ├── urls.cpython-39.pyc
-            │   ├── wsgi.cpython-38.pyc
-            │   └── wsgi.cpython-39.pyc
-            ├── settings.py
-            ├── urls.py
+            │   ├── train.py
+            │   └── topic1 // 主题1相关数据和配置文件
+            │       ├── config.txt // 基础参数配置文件
+            │       ├── data
+            │       │   ├── exercise.json // 推荐题库（必须文件）
+            │       │   ├── exer_know.json // 题目和知识关联
+            │       │   └── log.txt // 学生做题日志
+            │       ├── exercise
+            │       │   └── 主题1知道点相关问题.csv // 上课练习题目（必须文件）
+            │       └── model // 存储模型
+            │           └── model_1
+            │
+            ├── settings.py // 配置
+            ├── urls.py // 路由
             └── wsgi.py 
 ```
 
