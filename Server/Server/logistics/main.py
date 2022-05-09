@@ -41,14 +41,14 @@ def record_server(request):
 def recommend_server(request):
     if 'stu_id' in request.GET and request.GET['stu_id']:
         stu_id = int(request.GET['stu_id'])
-        if 'know_id' in request.GET and request.GET['know_id']:
-            # 指定知识
-            know_id = int(request.GET['know_id'])
+        if 'exer_id' in request.GET and request.GET['exer_id']:
+            # 指定题目
+            know_id = int(request.GET['exer_id'])
             recommend(stu_id, know_id)
-        else:
-            # 未指定知识
-            for k in range(knowledge_n):
-                recommend(stu_id, k+1)
+        # else:
+            # 未指定题目，按照知识推荐
+            # for k in range(knowledge_n):
+            #     recommend(stu_id, k+1)
     else:
         return HttpResponse('请指定stu_id，如：/recommend?stu_id=2')
 
