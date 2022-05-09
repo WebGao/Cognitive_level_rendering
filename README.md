@@ -11,28 +11,27 @@
         ├── manage.py
         └── Server
             ├── __init__.py
-            ├── logistics // 学情代码
-            │   ├── data_loader.py
-            │   ├── exer_know.py
-            │   ├── main.py
-            │   ├── model.py
-            │   ├── predict.py
-            │   ├── recommend.py
-            │   ├── train.py
-            │   └── topicN // 主题N相关数据和配置文件（必须配置）
-            │       ├── config.txt // 基础参数配置文件
-            │       ├── data
-            │       │   ├── exercise.json // 推荐题库（必须文件）
-            │       │   ├── exer_know.json // 题目和知识关联
-            │       │   └── log.txt // 学生做题日志
-            │       ├── exercise
-            │       │   └── 主题1知道点相关问题.csv // 上课练习题目（必须文件）
-            │       └── model // 存储模型
-            │           └── model_n
-            │
+            ├── wsgi.py 
             ├── settings.py // 配置
             ├── urls.py // 路由
-            └── wsgi.py 
+            └──logistics // 学情代码
+                ├── data_loader.py
+                ├── exer_know.py
+                ├── main.py
+                ├── model.py
+                ├── predict.py
+                ├── recommend.py
+                ├── train.py
+                └── topicN // 主题N相关数据和配置文件（必须配置）
+                    ├── config.txt // 基础参数配置文件
+                    ├── data
+                    │   ├── exercise.json // 推荐题库（必须文件）
+                    │   ├── exer_know.json // 题目和知识关联
+                    │   └── log.txt // 学生做题日志
+                    ├── exercise
+                    │   └── 主题1知道点相关问题.csv // 上课练习题目（必须文件）
+                    └── model // 存储模型
+                        └── model_n
 ```
 
 - 数据文件
