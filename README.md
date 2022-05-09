@@ -28,7 +28,7 @@
                     │   ├── exercise.json // 推荐题库（必须文件）
                     │   ├── exer_know.json // 题目和知识关联
                     │   └── log.txt // 学生做题日志
-                    ├── exercise
+                    ├── exercise // 该目录文件数必须为1
                     │   └── 主题N知识点相关问题.csv // 上课练习题目（必须文件，csv）
                     └── model // 存储模型
                         └── model_n
