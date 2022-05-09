@@ -99,22 +99,22 @@ model is saved as model_3
 ```
 根据参数提供不同使用方法：
 
-参数：stu_id
+参数：stu_id（暂时不支持，应当根据当前topic为学生提供专项练习）
 ```
 例子：http://127.0.0.1:8000/logistics/1/recommend?stu_id=2
 ```
 
-参数：stu_id、exer_id，提供策略1、2、3、4推荐
+参数：stu_id、exer_id，为题目exer_id（不考虑做题是否正确）提供策略1、2、3、4推荐
 ```
 例子：http://127.0.0.1:8000/logistics/1/recommend?stu_id=2&exer_id=3
 ```
 
-参数：stu_id、exer_id、response=0，提供策略1、2推荐
+参数：stu_id、exer_id、response=0，根据题目exer_id练习成绩（做错）提供策略1、2推荐
 ```
 例子：http://127.0.0.1:8000/logistics/1/recommend?stu_id=2&exer_id=3&response=0
 ```
 
-参数：stu_id、exer_id、response=1，提供策略3、4推荐
+参数：stu_id、exer_id、response=1，根据题目exer_id练习成绩（做对）提供策略3、4推荐
 ```
 例子：http://127.0.0.1:8000/logistics/1/recommend?stu_id=2&exer_id=3&response=1
 ```
