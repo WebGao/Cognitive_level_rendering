@@ -86,11 +86,16 @@ model is saved as model_3
 请指定stu_id，如：/predict?stu_id=2
 ```
 
-
-
 ### 说明
 - 路径：考虑到服务器环境和本地环境差异，若是遇到路径错误，可以使用```os.getcwd()```获取当前文件（```manage.py```）路径，基于此到达目标文件路径，如：```os.getcwd() + '/Server/logistics/model'```。
 
 - 后端按需可以添加：删除模型、指定模型等服务。
 
-- 前端需要考虑请求后如何确认请求成功
+- 前端需要考虑请求后如何确认请求成功。
+
+- exer_know.json文件处理。
+
+- exercise.json用于推荐（未提供）。
+
+- 可以考虑把很多data_loader处理的数据保存，之后使用可以直接使用，省去计算时间。
+

@@ -20,7 +20,8 @@ def exer_know(topic):
         for i in range(len(know)):
             if 'nan' not in str(know[i]):
                 exer += 1
-                exer_know_dic[exer] = re.findall(r"\d+\.?\d*", str(know[i]))
+                # exer_know_dic[int(exer)] = re.findall(r"\d+\.?\d*", str(know[i]))
+                exer_know_dic[exer] = list(map(int, re.findall(r"\d+\.?\d*", str(know[i]))))
         with open(data_file + '/data/exer_know.json', 'w', encoding='utf8') as output_file:
             json.dump(exer_know_dic, output_file, indent=4, ensure_ascii=False)
     return exer_know_dic

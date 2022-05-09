@@ -1,0 +1,52 @@
+[
+  {
+    "exer_id": 30,
+    "know_id": [1, 2, 3],
+    "diffculty": 0.3
+  },
+  {
+    "exer_id": 31,
+    "know_id": [4, 5, 6],
+    "diffculty": 0.3
+  },
+  {
+    "exer_id": 33,
+    "know_id": [7, 8, 9],
+    "diffculty": 0.3
+  },
+  {
+    "exer_id": 34,
+    "know_id": [10, 3],
+    "diffculty": 0.3
+  },
+  {
+    "exer_id": 35,
+    "know_id": [3],
+    "diffculty": 0.3
+  },
+  {
+    "exer_id": 36,
+    "know_id": [5],
+    "diffculty": 0.3
+  },
+  {
+    "exer_id": 37,
+    "know_id": [4],
+    "diffculty": 0.3
+  },
+  {
+    "exer_id": 38,
+    "know_id": [1, 2, 3],
+    "diffculty": 0.3
+  },
+  {
+    "exer_id": 39,
+    "know_id": [1, 2, 3],
+    "diffculty": 0.3
+  },
+  {
+    "exer_id": 40,
+    "know_id": [2],
+    "diffculty": 0.3
+  }
+]

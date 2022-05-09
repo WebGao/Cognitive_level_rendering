@@ -42,12 +42,12 @@ def recommend_server(request, topic):
             # 指定题目
             know_id = int(request.GET['exer_id'])
             response = int(request.GET['response'])
-            recommend(topic, stu_id, know_id, response)
+            recom_exer_dic = recommend(topic, stu_id, know_id, response, config_model_n(topic))
         # else:
             # 未指定题目，按照知识推荐
             # for k in range(knowledge_n):
             #     recommend(stu_id, k+1)
-        return HttpResponse('ok')
+        return JsonResponse(recom_exer_dic)
     else:
         return HttpResponse('请指定stu_id，如：/recommend?stu_id=2')
 
