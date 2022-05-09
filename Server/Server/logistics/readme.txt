@@ -11,6 +11,8 @@ user_id, exercise_id, exercise_diff, know_code, attempts, start_time, end_time, 
 
 训练和预测独立
 
+需要维系题目和知识关联文件exer_know.json，运行pyhton exer_know.py
+
 
 
 

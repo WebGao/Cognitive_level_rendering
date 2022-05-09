@@ -11,9 +11,9 @@ def load_snapshot(model, filename):
     model.load_state_dict(torch.load(f, map_location=lambda s, loc: s))
     f.close()
 
-def predict(stu_id, know_feature_n, exer_feature_n, model_n):
+def predict(topic, stu_id, know_feature_n, exer_feature_n, model_n):
     http_response = {}
-    data_loader = TrainDataLoader(know_feature_n, exer_feature_n)
+    data_loader = TrainDataLoader(topic, know_feature_n, exer_feature_n)
     stu_feature = data_loader.stu_feature_m[stu_id - 1]
     '''
         知识通过次数
@@ -56,7 +56,7 @@ def predict(stu_id, know_feature_n, exer_feature_n, model_n):
     else:
         net = Net(know_feature_n, exer_feature_n)
         http_response['status'] = 'utilize model_' + str(model_n)
-        load_snapshot(net, os.getcwd() + '/Server/logistics/model/model_' + str(model_n))
+        load_snapshot(net, os.getcwd() + '/Server/logistics/topic' + str(topic) + '/model/model_' + str(model_n))
         net.eval()
         # 将学生每个知识统计数据输入net.get_know函数
         mastery = net.get_know(know_feature)

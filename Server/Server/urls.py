@@ -2,8 +2,8 @@ from django.urls import path
 from .logistics import main
 
 urlpatterns = [
-    path('logistics/train', main.train_server),
-    path('logistics/predict', main.predict_server),
-    path('logistics/record', main.record_server),
-    path('logistics/recommend', main.recommend_server),
+    path('logistics/<int:topic>/train', main.train_server),
+    path('logistics/<int:topic>/predict', main.predict_server),
+    path('logistics/<int:topic>/record', main.record_server),
+    path('logistics/<int:topic>/recommend', main.recommend_server),
 ]

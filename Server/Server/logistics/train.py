@@ -7,9 +7,9 @@ from sklearn.metrics import roc_auc_score
 from .data_loader import TrainDataLoader
 from .model import Net
 
-def train(know_feature_n, exer_feature_n, model_n):
+def train(topic, know_feature_n, exer_feature_n, model_n):
     log = ''
-    data_loader = TrainDataLoader(know_feature_n, exer_feature_n)
+    data_loader = TrainDataLoader(topic, know_feature_n, exer_feature_n)
     # 初始化模型
     net = Net(know_feature_n, exer_feature_n)
     log += (str(net) + ' <br>')
@@ -50,7 +50,7 @@ def train(know_feature_n, exer_feature_n, model_n):
         else:
             likelihood_value_old = likelihood_value
     # validate and save current model every epoch
-    save_snapshot(net, os.getcwd() + '/Server/logistics/model/model_' + str(model_n + 1))
+    save_snapshot(net, os.getcwd() + '/Server/logistics/topic' + str(topic) + '/model/model_' + str(model_n + 1))
     log += ("model is saved as model_" + str(model_n + 1) + ' <br>')
     # print (log)
     return log

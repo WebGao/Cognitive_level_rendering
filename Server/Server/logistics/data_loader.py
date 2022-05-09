@@ -7,17 +7,18 @@ class TrainDataLoader(object):
     '''
     data loader for training
     '''
-    def __init__(self, know_feature_n, exer_feature_n):
+    def __init__(self, topic, know_feature_n, exer_feature_n):
         self.batch_size = 1 # 不可改
         self.ptr = 0
         self.data = []
+        self.topic = topic
         self.know_feature_n = know_feature_n
         self.exer_feature_n = exer_feature_n
 
-        data_file = os.getcwd() + '/Server/logistics/data/log.txt'
+        data_file = os.getcwd() + '/Server/logistics/topic' + str(topic) + '/data/log.txt'
         with open(data_file) as f:
             self.data = f.readlines()
-        with open(os.getcwd() + '/Server/logistics/config.txt') as i_f:
+        with open(os.getcwd() + '/Server/logistics/topic' + str(topic) + '/config.txt') as i_f:
             i_f.readline()
             self.student_n, self.exer_n, self.knowledge_n = list(map(eval, i_f.readline().split(',')))
         # 计算每个学对于在不同题目、知识的统计数据

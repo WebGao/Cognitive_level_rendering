@@ -4,12 +4,9 @@ from .recommend import recommend
 import os
 from django.http import HttpResponse, JsonResponse
 
-with open(os.getcwd() + '/Server/logistics/config.txt') as i_f:
-    i_f.readline()
-    student_n, exer_n, knowledge_n = list(map(eval, i_f.readline().split(',')))
 
-def config_model_n():
-    filepath = os.getcwd() + '/Server/logistics/model'
+def config_model_n(topic):
+    filepath = os.getcwd() + '/Server/logistics/topic' + str(topic) + '/model'
     # print(filepath)
     files = os.listdir(filepath)
     # for fi in files:
@@ -17,19 +14,19 @@ def config_model_n():
     #     print (fi_d)
     return len(files)
 
-def train_server(request):
+def train_server(request, topic):
     know_feature_n = 7
     exer_feature_n = 3
-    log = train(know_feature_n, exer_feature_n, config_model_n())
+    log = train(topic, know_feature_n, exer_feature_n, config_model_n(topic))
     return HttpResponse(log)
 
-def predict_server(request):
+def predict_server(request, topic):
     know_feature_n = 7
     exer_feature_n = 3
     request.encoding = 'utf-8'
     if 'stu_id' in request.GET and request.GET['stu_id']:
         stu_id = int(request.GET['stu_id'])
-        http_response = predict(stu_id, know_feature_n, exer_feature_n, config_model_n())
+        http_response = predict(topic, stu_id, know_feature_n, exer_feature_n, config_model_n(topic))
         http_response['stu_id'] = stu_id
         return JsonResponse(http_response)
     else:
@@ -38,17 +35,19 @@ def predict_server(request):
 def record_server(request):
     print (123)
 
-def recommend_server(request):
+def recommend_server(request, topic):
     if 'stu_id' in request.GET and request.GET['stu_id']:
         stu_id = int(request.GET['stu_id'])
-        if 'exer_id' in request.GET and request.GET['exer_id']:
+        if 'exer_id' in request.GET and request.GET['exer_id'] and 'response' in request.GET and request.GET['response']:
             # 指定题目
             know_id = int(request.GET['exer_id'])
-            recommend(stu_id, know_id)
+            response = int(request.GET['response'])
+            recommend(topic, stu_id, know_id, response)
         # else:
             # 未指定题目，按照知识推荐
             # for k in range(knowledge_n):
             #     recommend(stu_id, k+1)
+        return HttpResponse('ok')
     else:
         return HttpResponse('请指定stu_id，如：/recommend?stu_id=2')
 
