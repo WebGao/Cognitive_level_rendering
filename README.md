@@ -32,7 +32,7 @@ http://127.0.0.1:8000/logistics/train
 
 - 渲染学情（predict）
 
-请指定stu_id，如：/predict?stu_id=2，当前stu_id为整型，若是用户名字符串，服务器端需要维系用户名字符串和排序映射。
+请指定stu_id，如：/predict?stu_id=2，当前stu_id为整型（所有student、knowledge id都从1开始），若是用户名字符串，服务器端需要维系用户名字符串和排序映射。
 ```
 http://127.0.0.1:8000/logistics/predict?stu_id=2
 

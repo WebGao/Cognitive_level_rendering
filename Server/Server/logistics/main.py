@@ -1,7 +1,12 @@
 from .train import train
 from .predict import predict
+from .recommend import recommend
 import os
 from django.http import HttpResponse, JsonResponse
+
+with open(os.getcwd() + '/Server/logistics/config.txt') as i_f:
+    i_f.readline()
+    student_n, exer_n, knowledge_n = list(map(eval, i_f.readline().split(',')))
 
 def config_model_n():
     filepath = os.getcwd() + '/Server/logistics/model'
@@ -32,6 +37,20 @@ def predict_server(request):
 
 def record_server(request):
     print (123)
+
+def recommend_server(request):
+    if 'stu_id' in request.GET and request.GET['stu_id']:
+        stu_id = int(request.GET['stu_id'])
+        if 'know_id' in request.GET and request.GET['know_id']:
+            # 指定知识
+            know_id = int(request.GET['know_id'])
+            recommend(stu_id, know_id)
+        else:
+            # 未指定知识
+            for k in range(knowledge_n):
+                recommend(stu_id, k+1)
+    else:
+        return HttpResponse('请指定stu_id，如：/recommend?stu_id=2')
 
 if __name__ == '__main__':
     know_feature_n = 7
