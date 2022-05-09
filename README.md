@@ -1,6 +1,6 @@
 # Cognitive_level_rendering
 
-### 项目结构
+### 项目结构和数据基础
 
 ### 安装Django和[PyTorch](https://pytorch.org/get-started/locally/)
 ```
