@@ -19,7 +19,7 @@
             │   ├── predict.py
             │   ├── recommend.py
             │   ├── train.py
-            │   └── topic1 // 主题1相关数据和配置文件
+            │   └── topicN // 主题N相关数据和配置文件
             │       ├── config.txt // 基础参数配置文件
             │       ├── data
             │       │   ├── exercise.json // 推荐题库（必须文件）
@@ -28,7 +28,7 @@
             │       ├── exercise
             │       │   └── 主题1知道点相关问题.csv // 上课练习题目（必须文件）
             │       └── model // 存储模型
-            │           └── model_1
+            │           └── model_n
             │
             ├── settings.py // 配置
             ├── urls.py // 路由
