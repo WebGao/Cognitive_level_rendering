@@ -86,6 +86,39 @@ model is saved as model_3
 请指定stu_id，如：/predict?stu_id=2
 ```
 
+- 推荐题目（recommend）
+```
+请求：logistics/<int:topic>/recommend
+参数：stu_id
+可选参数：exer_id、response
+推荐策略：
+  - 策略1：
+  - 策略2：
+  - 策略3：
+  - 策略4：
+```
+根据参数提供不同使用方法：
+
+参数：stu_id
+```
+例子：http://127.0.0.1:8000/logistics/1/recommend?stu_id=2
+```
+
+参数：stu_id、exer_id，提供策略1、2、3、4推荐
+```
+例子：http://127.0.0.1:8000/logistics/1/recommend?stu_id=2&exer_id=3
+```
+
+参数：stu_id、exer_id、response=0，提供策略1、2推荐
+```
+例子：http://127.0.0.1:8000/logistics/1/recommend?stu_id=2&exer_id=3&response=0
+```
+
+参数：stu_id、exer_id、response=1，提供策略3、4推荐
+```
+例子：http://127.0.0.1:8000/logistics/1/recommend?stu_id=2&exer_id=3&response=1
+```
+
 ### 说明
 - 路径：考虑到服务器环境和本地环境差异，若是遇到路径错误，可以使用```os.getcwd()```获取当前文件（```manage.py```）路径，基于此到达目标文件路径，如：```os.getcwd() + '/Server/logistics/model'```。
 
@@ -97,5 +130,4 @@ model is saved as model_3
 
 - exercise.json用于推荐（未提供）。
 
-- 可以考虑把很多data_loader处理的数据保存，之后使用可以直接使用，省去计算时间。
-
+- 可以考虑增量计算，同时把data_loader处理的数据保存，之后使用可以直接使用，省去计算时间。
