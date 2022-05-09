@@ -19,7 +19,7 @@
             │   ├── predict.py
             │   ├── recommend.py
             │   ├── train.py
-            │   └── topicN // 主题N相关数据和配置文件
+            │   └── topicN // 主题N相关数据和配置文件（必须配置）
             │       ├── config.txt // 基础参数配置文件
             │       ├── data
             │       │   ├── exercise.json // 推荐题库（必须文件）
