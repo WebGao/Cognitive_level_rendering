@@ -1,5 +1,7 @@
 # Cognitive_level_rendering
 
+### 项目结构
+
 ### 安装Django和[PyTorch](https://pytorch.org/get-started/locally/)
 ```
 pip install django
