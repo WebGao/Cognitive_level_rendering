@@ -2,6 +2,70 @@
 
 ### 项目结构和数据基础
 
+- 目录结构
+```
+└── Cognitive_level_rendering
+    ├── README.md
+    └── Server
+        ├── db.sqlite3
+        ├── manage.py
+        └── Server
+            ├── asgi.py
+            ├── __init__.py
+            ├── logistics
+            │   ├── config.txt
+            │   ├── data
+            │   │   └── log.txt
+            │   ├── data_loader.py
+            │   ├── exer_know.py
+            │   ├── main.py
+            │   ├── model
+            │   ├── model.py
+            │   ├── predict.py
+            │   ├── __pycache__
+            │   │   ├── data_loader.cpython-38.pyc
+            │   │   ├── data_loader.cpython-39.pyc
+            │   │   ├── exer_know.cpython-39.pyc
+            │   │   ├── main.cpython-38.pyc
+            │   │   ├── main.cpython-39.pyc
+            │   │   ├── model.cpython-38.pyc
+            │   │   ├── model.cpython-39.pyc
+            │   │   ├── predict.cpython-38.pyc
+            │   │   ├── predict.cpython-39.pyc
+            │   │   ├── recommend.cpython-39.pyc
+            │   │   ├── train.cpython-38.pyc
+            │   │   └── train.cpython-39.pyc
+            │   ├── README.md
+            │   ├── readme.txt
+            │   ├── recommend.py
+            │   ├── topic1
+            │   │   ├── config.txt
+            │   │   ├── data
+            │   │   │   ├── exercise.json
+            │   │   │   ├── exer_know.json
+            │   │   │   └── log.txt
+            │   │   ├── exercise
+            │   │   │   └── 主题1知道点相关问题.csv
+            │   │   ├── __init__.py
+            │   │   └── model
+            │   │       └── model_1
+            │   └── train.py
+            ├── __pycache__
+            │   ├── __init__.cpython-38.pyc
+            │   ├── __init__.cpython-39.pyc
+            │   ├── settings.cpython-38.pyc
+            │   ├── settings.cpython-39.pyc
+            │   ├── urls.cpython-38.pyc
+            │   ├── urls.cpython-39.pyc
+            │   ├── wsgi.cpython-38.pyc
+            │   └── wsgi.cpython-39.pyc
+            ├── settings.py
+            ├── urls.py
+            └── wsgi.py 
+```
+
+- 数据文件
+
 ### 安装Django和[PyTorch](https://pytorch.org/get-started/locally/)
 ```
 pip install django
