@@ -46,7 +46,7 @@ pip install torch torchvision torchaudio
 ```
 cd Cognitive_level_rendering
 cd Server
-python manage.py runserver [port，默认是8080]
+python manage.py runserver [port，默认是8000]
 ```
 
 ### 访问
