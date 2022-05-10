@@ -58,6 +58,7 @@ python manage.py runserver [port，默认是8000]
 参数：stu_log，不同属性之间用_连接，多个知识之间用-连接
 例子：http://127.0.0.1:8000/logistics/1/record?stu_log=3_10_0.6_1-5_3_213124_213330_0
 ```
+
 返回数据：存储日志（字符串），成功请求后返回存储日志：
 ```
 3, 10, 0.6, 1 5, 3, 213124, 213330, 0
@@ -70,7 +71,7 @@ python manage.py runserver [port，默认是8000]
 例子：http://127.0.0.1:8000/logistics/1/train
 ```
 
-返回数据：训练日志（字符串） ，成功请求后返回训练日志：
+返回数据：训练日志（字符串），成功请求后返回训练日志：
 ```
 Net( (know_linear): Linear(in_features=7, out_features=1, bias=True) (disc_linear): Linear(in_features=3, out_features=1, bias=True) ) 
 training model... 
