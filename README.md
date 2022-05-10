@@ -55,16 +55,21 @@ python manage.py runserver [port，默认是8080]
 - 存储学生做题记录（record）
 ```
 请求：logistics/<int:topic>/record
-例子：http://127.0.0.1:8000/logistics/1/record
-
-// 返回数据：存储日志（字符串）
+参数：stu_log，不同属性之间用_连接，多个知识之间用-连接
+例子：http://127.0.0.1:8000/logistics/1/record?stu_log=3_10_0.6_1-5_3_213124_213330_0
 ```
+返回数据：存储日志（字符串），成功请求后返回存储日志：
+```
+3, 10, 0.6, 1 5, 3, 213124, 213330, 0
+```
+备注：建议log备份，写入前需要审核（需要后端提供审核机制）。
 
 - 训练模型（train）
 ```
 请求：logistics/<int:topic>/train
 例子：http://127.0.0.1:8000/logistics/1/train
 ```
+
 返回数据：训练日志（字符串） ，成功请求后返回训练日志：
 ```
 Net( (know_linear): Linear(in_features=7, out_features=1, bias=True) (disc_linear): Linear(in_features=3, out_features=1, bias=True) ) 
@@ -167,3 +172,5 @@ model is saved as model_3
 - exercise.json用于推荐（未提供）。
 
 - 可以考虑增量计算，同时把data_loader处理的数据保存，之后使用可以直接使用，省去计算时间。
+
+- record建议log备份，写入前需要审核（需要后端提供审核机制）。
