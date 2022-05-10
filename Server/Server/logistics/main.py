@@ -32,8 +32,18 @@ def predict_server(request, topic):
     else:
         return HttpResponse('请指定stu_id，如：/predict?stu_id=2')
 
-def record_server(request):
-    print (123)
+def record_server(request, topic):
+    # log=3_10_0.6_1-5_3_213124_213330_0
+    # 可以考虑加密和解密
+    request.encoding = 'utf-8'
+    if 'stu_log' in request.GET and request.GET['stu_log']:
+        stu_log = request.GET['stu_log']
+    stu_log = stu_log.replace('_', ', ').replace('-', ' ')
+    stu_log += '\n'
+    # 建议备份log，最起码要查重
+    with open(os.getcwd() + '/Server/logistics/topic' + str(topic) + '/data/log.txt', 'a') as f:
+        f.write(stu_log)
+    return HttpResponse(stu_log)
 
 def recommend_server(request, topic):
     if 'stu_id' in request.GET and request.GET['stu_id']:
