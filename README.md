@@ -175,3 +175,5 @@ model is saved as model_3
 - 可以考虑增量计算，同时把data_loader处理的数据保存，之后使用可以直接使用，省去计算时间。
 
 - record建议log备份，写入前需要审核（需要后端提供审核机制）。
+
+- 服务器端运行，修改setting文件['*'], python manage.py runserver 0.0.0.0:8003
