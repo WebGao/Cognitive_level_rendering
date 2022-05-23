@@ -1,19 +1,16 @@
 from .exer_know import exer_know
-from .predict import predict
 import os
 import json
 from .data_loader import TrainDataLoader
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 
-def recommend(topic, stu_id, exer_id, response, model_n):
+def recommend(topic, stu_id, exer_id, response):
     know_feature_n = 7
     exer_feature_n = 3
     # 题目和知识关联
     exer_know_dic = exer_know(topic)
     know_id = exer_know_dic[str(exer_id)]
-    # 学情
-    http_response = predict(topic, stu_id, know_feature_n, exer_feature_n, model_n)['cognitive level']
     # 推荐题库
     with open(os.getcwd() + '/Server/logistics/topic' + str(topic) + '/data/exercise.json', encoding='utf8') as i_f:
         recom_exer = json.load(i_f)
