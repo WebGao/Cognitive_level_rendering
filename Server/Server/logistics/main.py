@@ -3,7 +3,7 @@ from .predict import predict
 from .recommend import recommend
 import os
 from django.http import HttpResponse, JsonResponse
-
+import random
 
 def config_model_n(topic):
     filepath = os.getcwd() + '/Server/logistics/topic' + str(topic) + '/model'
@@ -48,15 +48,45 @@ def record_server(request, topic):
 def recommend_server(request, topic):
     if 'stu_id' in request.GET and request.GET['stu_id']:
         stu_id = int(request.GET['stu_id'])
-        if 'exer_id' in request.GET and request.GET['exer_id'] and 'response' in request.GET and request.GET['response']:
-            # 指定题目
+        if 'exer_id' in request.GET and request.GET['exer_id']:
             know_id = int(request.GET['exer_id'])
-            response = int(request.GET['response'])
-            recom_exer_dic = recommend(topic, stu_id, know_id, response, config_model_n(topic))
-        # else:
+            if 'response' in request.GET and request.GET['response']:
+                # 指定题目
+                # 若是当前题目做错：
+                #（1）需要练习当前知识关联其他题目
+                #（2）推荐当前题目关联知识的前驱知识对应题目（夯实基础），未提供知识关系
+                # 若是当前题目做对，可以夯实基础：
+                #（3）推荐与stu_id做题记录相似的学生在当前知识上做错的题
+                #（4）推荐与stu_id做题记录相似的学生在当前题目关联知识的前驱知识对应易错题目（夯实基础），未提供知识关系
+                response = int(request.GET['response'])
+                recom_exer_dic = recommend(topic, stu_id, know_id, response, config_model_n(topic))
+            else:
+                # （1）需要练习当前知识关联其他题目
+                # （2）推荐当前题目关联知识的前驱知识对应题目（夯实基础），未提供知识关系
+                # （3）推荐与stu_id做题记录相似的学生在当前知识上做错的题
+                # （4）推荐与stu_id做题记录相似的学生在当前题目关联知识的前驱知识对应易错题目（夯实基础），未提供知识关系
+                recom_exer_dic_correct = recommend(topic, stu_id, know_id, 1, config_model_n(topic))
+                recom_exer_dic = recommend(topic, stu_id, know_id, 0, config_model_n(topic))
+                recom_exer_dic['strategy_3'] = recom_exer_dic_correct['strategy_3']
+                recom_exer_dic['strategy_4'] = recom_exer_dic_correct['strategy_4']
+                print (recom_exer_dic)
+
+        else:
             # 未指定题目，按照知识推荐
-            # for k in range(knowledge_n):
-            #     recommend(stu_id, k+1)
+            # 知识覆盖度
+            recom_exer_dic = {
+                "stu_id": stu_id
+            }
+            with open(os.getcwd() + '/Server/logistics/topic' + str(topic) + '/config.txt') as i_f:
+                i_f.readline()
+                student_n, exer_n, knowledge_n = list(map(eval, i_f.readline().split(',')))
+            for k in range(knowledge_n):
+                if  random.random() >= 0.5:
+                    response = 1
+                else:
+                    response = 0
+                recom_exer_dic_know = recommend(topic, stu_id, k + 1, response, config_model_n(topic))
+                recom_exer_dic['know_' + str(k + 1)] = recom_exer_dic_know
         return JsonResponse(recom_exer_dic)
     else:
         return HttpResponse('请指定stu_id，如：/recommend?stu_id=2')

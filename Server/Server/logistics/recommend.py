@@ -54,6 +54,6 @@ def recommend(topic, stu_id, exer_id, response, model_n):
                     stu_l = stu_l.replace('\n', '').replace(' ', '').split(',')
                     if int(stu_l[0]) == s+1 and int(stu_l[-1]) == 0 and int(stu_l[1]) not in recom_exer_dic['strategy_3']:
                         recom_exer_dic['strategy_3'].append(int(stu_l[1]))
-        # strategy 4：推荐与stu_id做题记录相似的学生在当前题目关联知识的前驱知识对应易错题目（夯实基础），未提供知识关
+        # strategy 4：推荐与stu_id做题记录相似的学生在当前题目关联知识的前驱知识对应易错题目（夯实基础），未提供知识关系
         recom_exer_dic['strategy_4'] = []
     return recom_exer_dic

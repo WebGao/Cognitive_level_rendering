@@ -90,10 +90,10 @@ class TrainDataLoader(object):
                                 self.stu_feature_m[user_id - 1][(k - 1) * 8 + 0] + self.stu_feature_m[user_id - 1][
                             (k - 1) * 8 + 1]))
 
-                # 用时 300秒
-                k_fea.append(self.stu_feature_m[user_id - 1][(k - 1) * 8 + 2] / 300)
-                k_fea.append(self.stu_feature_m[user_id - 1][(k - 1) * 8 + 3] / 300)
-                k_fea.append(self.stu_feature_m[user_id - 1][(k - 1) * 8 + 4] / 300)
+                # 用时 300*1000毫秒
+                k_fea.append(self.stu_feature_m[user_id - 1][(k - 1) * 8 + 2] / 300 / 1000)
+                k_fea.append(self.stu_feature_m[user_id - 1][(k - 1) * 8 + 3] / 300 / 1000)
+                k_fea.append(self.stu_feature_m[user_id - 1][(k - 1) * 8 + 4] / 300 / 1000)
 
                 # k_fea.append(self.stu_feature_m[user_id-1][(k-1)*8+2] / np.max(self.stu_feature_m[:, (k-1)*8+2]))
                 # k_fea.append(self.stu_feature_m[user_id-1][(k-1)*8+3] / np.max(self.stu_feature_m[:, (k-1)*8+3]))
