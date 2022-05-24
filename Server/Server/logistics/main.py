@@ -116,6 +116,16 @@ def stulog_server(request, topic):
         data = f.read()
     return HttpResponse(data.replace('\n', '<br>'))
 
+def stulog_server(request, topic):
+    with open(os.getcwd() + '/Server/logistics/topic' + str(topic) + '/data/log.txt') as f:
+        data = f.read()
+    return HttpResponse(data.replace('\n', '<br>'))
+
+def clear_stulog_server(request, topic):
+    with open(os.getcwd() + '/Server/logistics/topic' + str(topic) + '/data/log.txt', 'w') as f:
+       f.write('')
+    return HttpResponse('successfully')
+
 if __name__ == '__main__':
     know_feature_n = 7
     '''

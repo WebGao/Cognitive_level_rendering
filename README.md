@@ -95,6 +95,18 @@ training is ok
 model is saved as model_3 
 ```
 
+- 查看学生做题记录（stulog）
+```
+请求：logistics/<int:topic>/stulog
+例子：http://127.0.0.1:8000/logistics/1/stulog
+```
+
+- 删除全部学生做题记录（clear_stulog）
+```
+请求：logistics/<int:topic>/clear_stulog
+例子：http://127.0.0.1:8000/logistics/1/clear_stulog
+```
+
 - 渲染学情（predict）
 
 请指定stu_id，如：/predict?stu_id=2，当前stu_id为整型（student、knowledge、exercise id为正整数），若是用户名字符串，服务器端需要维系用户名字符串和排序映射。
