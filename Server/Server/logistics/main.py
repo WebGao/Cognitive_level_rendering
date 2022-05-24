@@ -3,7 +3,21 @@ from .predict import predict
 from .recommend import recommend
 import os
 from django.http import HttpResponse, JsonResponse
+import logging
 import random
+
+# logger = logging.getLogger(__name__)
+# logger.setLevel(level=logging.INFO)
+# handler = logging.FileHandler(os.getcwd() + '/Server/logistics/log/log.txt')
+# handler.setLevel(logging.INFO)
+# formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+# handler.setFormatter(formatter)
+#
+# console = logging.StreamHandler()
+# console.setLevel(logging.INFO)
+#
+# logger.addHandler(handler)
+# logger.addHandler(console)
 
 def config_model_n(topic):
     filepath = os.getcwd() + '/Server/logistics/topic' + str(topic) + '/model'
@@ -15,6 +29,7 @@ def config_model_n(topic):
     return len(files)
 
 def train_server(request, topic):
+    # logger.info("Post: start print log")
     know_feature_n = 7
     exer_feature_n = 3
     log = train(topic, know_feature_n, exer_feature_n, config_model_n(topic))
@@ -91,10 +106,15 @@ def recommend_server(request, topic):
                 else:
                     response = 0
                 recom_exer_dic_know = recommend(topic, stu_id, k + 1, response)
-                recom_exer_dic['know_' + str(k + 1)] = recom_exer_dic_know
+                recom_exer_dic[str(k + 1)] = recom_exer_dic_know
         return JsonResponse(recom_exer_dic)
     else:
         return HttpResponse('请指定stu_id，如：/recommend?stu_id=2')
+
+def stulog_server(request, topic):
+    with open(os.getcwd() + '/Server/logistics/topic' + str(topic) + '/data/log.txt') as f:
+        data = f.read()
+    return HttpResponse(data.replace('\n', '<br>'))
 
 if __name__ == '__main__':
     know_feature_n = 7

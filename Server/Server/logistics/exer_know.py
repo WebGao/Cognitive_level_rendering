@@ -6,7 +6,7 @@ import json
 def exer_know(topic):
     data_file = os.getcwd() + '/Server/logistics/topic' + str(topic)
     if os.path.exists(data_file + '/data/exer_know.json'):
-        print ('使用题目和知识关联文件exer_know.json')
+        # print ('使用题目和知识关联文件exer_know.json')
         with open(data_file + '/data/exer_know.json', encoding='utf8') as i_f:
             exer_know_dic = json.load(i_f)
     else:
